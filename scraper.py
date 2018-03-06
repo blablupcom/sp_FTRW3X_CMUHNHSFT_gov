@@ -107,7 +107,17 @@ for block in blocks:
         csvMth = title[:3]
         csvMth = convert_mth_strings(csvMth.upper())
         data.append([csvYr, csvMth, url])
-
+ul_blocks = soup.find('table', cellspacing='0').find_previous('ul').find_all('a')
+for block in ul_blocks:
+    if '.csv' in block['href'] or '.xls' in block['href'] or '.xlsx' in block['href'] or '.XLSB' in block['href']:
+        url = 'http://www.cmft.nhs.uk'+block['href']
+        title = block.text.strip()
+        if not title:
+            continue
+        csvYr = title[-4:]
+        csvMth = title[:3]
+        csvMth = convert_mth_strings(csvMth.upper())
+        data.append([csvYr, csvMth, url])
 
 #### STORE DATA 1.0
 
