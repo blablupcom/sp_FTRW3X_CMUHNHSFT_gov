@@ -117,7 +117,6 @@ for bls in ul_blocks:
                 continue
             csvYr = title[-4:]
             csvMth = title[:3]
-            print csvYr, csvMth
             csvMth = convert_mth_strings(csvMth.upper())
             data.append([csvYr, csvMth, url])
 
